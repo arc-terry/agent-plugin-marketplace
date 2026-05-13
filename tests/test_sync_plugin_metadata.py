@@ -54,6 +54,25 @@ class SyncPluginMetadataTests(unittest.TestCase):
             self.read_json("plugins/code-reviewer/.codex-plugin/plugin.json")["name"],
             "code-reviewer",
         )
+        self.assertEqual(
+            self.read_json("plugins/code-reviewer/.claude-plugin/plugin.json")["version"],
+            "2.0.0",
+        )
+
+    def test_code_reviewer_v2_plugin_assets_are_present(self):
+        expected_paths = [
+            "plugins/code-reviewer/CHANGELOG.md",
+            "plugins/code-reviewer/LICENSE",
+            "plugins/code-reviewer/commands/review.md",
+            "plugins/code-reviewer/hooks/pre-merge-check.sh",
+            "plugins/code-reviewer/mcp/server.json",
+            "plugins/code-reviewer/examples/basic-usage.md",
+            "plugins/code-reviewer/examples/review-example.md",
+        ]
+
+        for relative_path in expected_paths:
+            with self.subTest(relative_path=relative_path):
+                self.assertTrue((self.tmpdir / relative_path).is_file())
 
     def test_check_succeeds_when_generated_files_match(self):
         self.assertEqual(self.run_sync().returncode, 0)

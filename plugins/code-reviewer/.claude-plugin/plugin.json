@@ -1,7 +1,7 @@
 {
   "name": "code-reviewer",
-  "version": "0.1.0",
-  "description": "Focused code review guidance for agentic development workflows.",
+  "version": "2.0.0",
+  "description": "Code review plugin with review skill, agent, command, hook, MCP metadata, and examples.",
   "author": {
     "name": "Terry Yu",
     "url": "https://github.com/terryyu"
@@ -12,19 +12,23 @@
   "keywords": [
     "code-review",
     "agent",
-    "quality"
+    "quality",
+    "pre-merge"
   ],
   "skills": "./skills/",
+  "hooks": "./hooks/pre-merge-check.sh",
+  "mcpServers": "./mcp/server.json",
   "interface": {
     "displayName": "Code Reviewer",
-    "shortDescription": "Review code changes for bugs, regressions, and missing tests.",
-    "longDescription": "Code Reviewer gives agentic coding tools a strict review posture focused on actionable findings, risk, and verification gaps.",
+    "shortDescription": "Review code changes before merge with repeatable checks.",
+    "longDescription": "Code Reviewer v2 provides a review skill, reviewer agent, slash-command style prompt, pre-merge verification hook, MCP server metadata, and examples for agentic code review workflows.",
     "developerName": "Terry Yu",
     "category": "Productivity",
     "capabilities": [
       "Review",
       "Analyze",
-      "Test"
+      "Test",
+      "Hook"
     ],
     "defaultPrompt": [
       "Review my current changes.",

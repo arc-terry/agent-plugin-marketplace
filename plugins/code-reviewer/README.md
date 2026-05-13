@@ -1,6 +1,18 @@
 # Code Reviewer Plugin
 
-Code Reviewer adds a focused review workflow for agentic coding tools. It is meant for reviewing local changes, pull requests, or a bounded patch before merge.
+Code Reviewer v2 adds a focused review workflow for agentic coding tools. It is meant for reviewing local changes, pull requests, or a bounded patch before merge.
+
+## Contents
+
+- `plugin.json`: canonical shared plugin manifest.
+- `.claude-plugin/plugin.json`: generated Claude Code manifest copy.
+- `.codex-plugin/plugin.json`: generated Codex manifest copy.
+- `skills/code-review/SKILL.md`: review workflow skill.
+- `agents/reviewer.agent.md`: reviewer agent instructions.
+- `commands/review.md`: command prompt for repeatable review requests.
+- `hooks/pre-merge-check.sh`: local verification hook.
+- `mcp/server.json`: MCP server metadata.
+- `examples/`: usage and output examples.
 
 ## What It Reviews
 
@@ -19,6 +31,14 @@ Example prompts:
 - `Review my current changes.`
 - `Find bugs and missing tests in this patch.`
 - `Check this PR for regressions.`
+
+## Commands
+
+Run the pre-merge check from the repository root:
+
+```bash
+plugins/code-reviewer/hooks/pre-merge-check.sh
+```
 
 ## Metadata
 

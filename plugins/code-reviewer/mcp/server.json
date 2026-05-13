@@ -1,0 +1,16 @@
+{
+  "name": "code-reviewer",
+  "version": "2.0.0",
+  "description": "MCP metadata placeholder for Code Reviewer plugin integrations.",
+  "transport": {
+    "type": "stdio"
+  },
+  "capabilities": {
+    "tools": [
+      {
+        "name": "review_changes",
+        "description": "Review code changes for defects, regressions, and missing tests."
+      }
+    ]
+  }
+}
