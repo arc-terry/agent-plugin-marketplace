@@ -1,0 +1,36 @@
+{
+  "name": "code-reviewer",
+  "version": "0.1.0",
+  "description": "Focused code review guidance for agentic development workflows.",
+  "author": {
+    "name": "Terry Yu",
+    "url": "https://github.com/terryyu"
+  },
+  "homepage": "https://github.com/terryyu/agent-plugin-marketplace/tree/main/plugins/code-reviewer",
+  "repository": "https://github.com/terryyu/agent-plugin-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "code-review",
+    "agent",
+    "quality"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Code Reviewer",
+    "shortDescription": "Review code changes for bugs, regressions, and missing tests.",
+    "longDescription": "Code Reviewer gives agentic coding tools a strict review posture focused on actionable findings, risk, and verification gaps.",
+    "developerName": "Terry Yu",
+    "category": "Productivity",
+    "capabilities": [
+      "Review",
+      "Analyze",
+      "Test"
+    ],
+    "defaultPrompt": [
+      "Review my current changes.",
+      "Find bugs and missing tests.",
+      "Check this PR for regressions."
+    ],
+    "brandColor": "#2563EB"
+  }
+}
