@@ -2,7 +2,7 @@
 
 This repository is a small framework for building and publishing local agent plugins across Claude Code, GitHub Copilot CLI, and Codex CLI.
 
-The repo keeps one canonical plugin manifest per plugin and generates platform metadata from it. The first plugin, `code-reviewer`, provides focused code review guidance for agentic coding workflows.
+The repo keeps one canonical plugin manifest per plugin and generates platform metadata from it. The `code-reviewer` plugin provides focused code review guidance for agentic coding workflows, and `researcher` provides evidence-first research guidance.
 
 ## Structure
 
@@ -12,12 +12,18 @@ The repo keeps one canonical plugin manifest per plugin and generates platform m
 ├── .claude-plugin/marketplace.json
 ├── .github/plugin/marketplace.json
 ├── plugins/
-│   └── code-reviewer/
+│   ├── code-reviewer/
+│   │   ├── plugin.json
+│   │   ├── .claude-plugin/plugin.json
+│   │   ├── .codex-plugin/plugin.json
+│   │   ├── skills/code-review/SKILL.md
+│   │   └── agents/reviewer.agent.md
+│   └── researcher/
 │       ├── plugin.json
 │       ├── .claude-plugin/plugin.json
 │       ├── .codex-plugin/plugin.json
-│       ├── skills/code-review/SKILL.md
-│       └── agents/reviewer.agent.md
+│       ├── skills/research/SKILL.md
+│       └── agents/researcher.agent.md
 ├── scripts/sync_plugin_metadata.py
 └── tests/test_sync_plugin_metadata.py
 ```
@@ -65,4 +71,15 @@ GitHub Copilot CLI:
 copilot plugin marketplace add ./
 ```
 
-Codex CLI uses the repo-local marketplace metadata at `.agents/plugins/marketplace.json`.
+Codex CLI:
+
+```bash
+codex plugin marketplace add ./
+codex plugin add researcher@agent-plugin-marketplace
+```
+
+To install the code review plugin instead, run:
+
+```bash
+codex plugin add code-reviewer@agent-plugin-marketplace
+```

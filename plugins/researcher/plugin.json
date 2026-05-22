@@ -1,0 +1,38 @@
+{
+  "name": "researcher",
+  "version": "1.0.0",
+  "description": "Research plugin with evidence gathering, source evaluation, citation, and synthesis workflows.",
+  "author": {
+    "name": "Terry Yu",
+    "url": "https://github.com/terryyu"
+  },
+  "homepage": "https://github.com/terryyu/agent-plugin-marketplace/tree/main/plugins/researcher",
+  "repository": "https://github.com/terryyu/agent-plugin-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "research",
+    "evidence",
+    "sources",
+    "citation"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Researcher",
+    "shortDescription": "Research questions with evidence, citations, and uncertainty notes.",
+    "longDescription": "Researcher provides an evidence-first workflow for gathering reliable sources, comparing claims, citing support, synthesizing conclusions, and identifying uncertainty or source gaps.",
+    "developerName": "Terry Yu",
+    "category": "Productivity",
+    "capabilities": [
+      "Research",
+      "Analyze",
+      "Cite",
+      "Synthesize"
+    ],
+    "defaultPrompt": [
+      "Research this topic and cite sources.",
+      "Compare the evidence for these options.",
+      "Summarize what is known and what remains uncertain."
+    ],
+    "brandColor": "#0F766E"
+  }
+}

@@ -34,17 +34,18 @@ class SyncPluginMetadataTests(unittest.TestCase):
         result = self.run_sync()
 
         self.assertEqual(result.returncode, 0, result.stderr)
+        expected_plugin_names = ["code-reviewer", "researcher"]
         self.assertEqual(
-            self.read_json(".claude-plugin/marketplace.json")["plugins"][0]["name"],
-            "code-reviewer",
+            [plugin["name"] for plugin in self.read_json(".claude-plugin/marketplace.json")["plugins"]],
+            expected_plugin_names,
         )
         self.assertEqual(
-            self.read_json(".github/plugin/marketplace.json")["plugins"][0]["name"],
-            "code-reviewer",
+            [plugin["name"] for plugin in self.read_json(".github/plugin/marketplace.json")["plugins"]],
+            expected_plugin_names,
         )
         self.assertEqual(
-            self.read_json(".agents/plugins/marketplace.json")["plugins"][0]["name"],
-            "code-reviewer",
+            [plugin["name"] for plugin in self.read_json(".agents/plugins/marketplace.json")["plugins"]],
+            expected_plugin_names,
         )
         self.assertEqual(
             self.read_json("plugins/code-reviewer/.claude-plugin/plugin.json")["name"],
@@ -58,6 +59,14 @@ class SyncPluginMetadataTests(unittest.TestCase):
             self.read_json("plugins/code-reviewer/.claude-plugin/plugin.json")["version"],
             "2.0.0",
         )
+        self.assertEqual(
+            self.read_json("plugins/researcher/.claude-plugin/plugin.json")["name"],
+            "researcher",
+        )
+        self.assertEqual(
+            self.read_json("plugins/researcher/.codex-plugin/plugin.json")["name"],
+            "researcher",
+        )
 
     def test_code_reviewer_v2_plugin_assets_are_present(self):
         expected_paths = [
@@ -68,6 +77,22 @@ class SyncPluginMetadataTests(unittest.TestCase):
             "plugins/code-reviewer/mcp/server.json",
             "plugins/code-reviewer/examples/basic-usage.md",
             "plugins/code-reviewer/examples/review-example.md",
+        ]
+
+        for relative_path in expected_paths:
+            with self.subTest(relative_path=relative_path):
+                self.assertTrue((self.tmpdir / relative_path).is_file())
+
+    def test_researcher_plugin_assets_are_present(self):
+        expected_paths = [
+            "plugins/researcher/CHANGELOG.md",
+            "plugins/researcher/LICENSE",
+            "plugins/researcher/README.md",
+            "plugins/researcher/commands/research.md",
+            "plugins/researcher/agents/researcher.agent.md",
+            "plugins/researcher/skills/research/SKILL.md",
+            "plugins/researcher/examples/basic-usage.md",
+            "plugins/researcher/examples/research-example.md",
         ]
 
         for relative_path in expected_paths:
